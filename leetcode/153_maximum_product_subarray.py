@@ -8,3 +8,4 @@ class Solution:
             current_min = min(tmp, n * current_min, n)
             rtn = max(rtn, current_max)
         return rtn
+    
