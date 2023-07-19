@@ -1,22 +1,23 @@
-import bisect
-
 
 class Solution:
     def smallestDistancePair(self, nums: list[int], k: int) -> int:
         nums.sort()
         n = len(nums)
 
-        def enough(distance) -> bool:  # two pointers
-            count, i, j = 0, 0, 0
-            while i < n or j < n:
-                while j < n and nums[j] - nums[i] <= distance: #fast pointer
+        def enough(distance: int) -> bool:
+            count = 0
+            i = 0
+            j = 0
+            while i < n:
+                while j < n and nums[j] - nums[i] <= distance:
                     j += 1
-                count += j - i - 1  # count pairs
-                i += 1  # move slow pointer
+                count += j-i-1
+                i += 1
             return count >= k
 
         left = 0
         right = nums[-1] - nums[0]
+
         while left < right:
             mid = (left + right) // 2
             if enough(mid):
@@ -24,5 +25,7 @@ class Solution:
             else:
                 left = mid + 1
 
+        return left
 
-Solution().smallestDistancePair([1, 3, 1], 1)
+
+Solution().smallestDistancePair([0,1,2,3,4,5,6,7,8,9], 3)

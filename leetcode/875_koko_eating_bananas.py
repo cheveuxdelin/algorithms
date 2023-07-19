@@ -1,9 +1,10 @@
 import math
 
+
 class Solution:
     def minEatingSpeed(self, piles: list[int], h: int) -> int:
-        def feasible(k: int) -> bool:
-            return sum(math.ceil(pile/k) for pile in piles) <= h
+        def feasible(speed: int):
+            return sum(math.ceil(pile / speed) for pile in piles) <= h
 
         left = 1
         right = max(piles)
@@ -12,5 +13,5 @@ class Solution:
             if feasible(mid):
                 right = mid
             else:
-                left = mid + 1
+                left = mid+1
         return left

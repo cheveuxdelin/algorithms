@@ -51,7 +51,6 @@ def longest_common_substring_bottom_up_space_optimized(s1: str, s2: str) -> int:
     max_length = 0
     for i1 in range(1, len(s1)+1):
         for i2 in range(len(s2), 0, -1):
-            print(dp)
             if s1[i1-1] == s2[i2-1]:
                 dp[i2] = 1 + dp[i2-1]
             else:

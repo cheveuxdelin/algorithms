@@ -1,5 +1,3 @@
-import math
-
 class Solution:
     def smallestDivisor(self, nums: list[int], threshold: int) -> int:
         def possible(divisor: int) -> bool:
